@@ -70,6 +70,7 @@ function(SET_UP_THIRD_PARTY pkg)
     set(base_dir "${pkg}_DIR")
     set(base_dir_val "${${base_dir}}")
     set(base_dir_NF "VISIT_${base_dir}-NOTFOUND")
+    message("base_dir_val=  ${base_dir_val}")
 
     # If this package wasn't requested, thats ok so just return.
     if ("${base_dir_val}" STREQUAL "" OR "${base_dir_val}" STREQUAL "${base_dir_NF}")
@@ -593,6 +594,8 @@ if(NOT VISIT_BUILD_MINIMAL_PLUGINS OR VISIT_SELECTED_DATABASE_PLUGINS)
 
     include(${VISIT_SOURCE_DIR}/CMake/FindConduit.cmake)
 
+    include(${VISIT_SOURCE_DIR}/CMake/FindFides.cmake)
+
     include(${VISIT_SOURCE_DIR}/CMake/FindFMS.cmake)
 
     include(${VISIT_SOURCE_DIR}/CMake/FindGDAL.cmake)
@@ -631,4 +634,3 @@ if (WIN32 AND VISIT_MAKE_NSIS_INSTALLER)
 endif()
 
 unset(VISIT_TP_PERMS)
-
